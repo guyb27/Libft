@@ -25,7 +25,7 @@ t_list	*ftprintf_handle_char(t_flags *spec, va_list args)
 		return (ft_lstnew(NULL, 0));
 	i = 0;
 	len = (spec->width == -1 ? 1 : spec->width);
-	str = (char*)ft_memalloc(sizeof(*str) * (len + 1));
+	str = (char*)pf_memalloc(sizeof(*str) * (len + 1));
 	if (spec->flags[minus])
 		str[i++] = arg;
 	while (i < len - !spec->flags[minus])

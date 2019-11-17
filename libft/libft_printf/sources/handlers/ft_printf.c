@@ -97,7 +97,7 @@ int	ft_inner_printf(int (*f)(void**, t_list*), void **fd, va_list args,
 		i++;
 	}
 	if (i > 0)
-		ft_lstaddend(&list, ft_lstnew(ft_strcut(str, i), i));
+		ft_lstaddend(&list, ft_lstnew(pf_strcut(str, i), i));
 	ret = f(fd, list);
 	free(list);
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/09/25 06:55:25 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 14:19:24 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 16:16:21 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ t_list	*arg_zero(t_flags *spec)
 	if (spec->prec == -1)
 		spec->prec = 1;
 	len = MAX(spec->prec + 2, spec->width);
-	rst = ft_memalloc(sizeof(*rst) * len);
+	rst = pf_memalloc(sizeof(*rst) * len);
 	i = 0;
 	if (!spec->flags[minus])
 		while (i < len - 3)
@@ -34,7 +34,7 @@ t_list	*arg_zero(t_flags *spec)
 	while (i < len)
 		rst[i++] = ' ';
 	rst[i] = '\0';
-	return (ft_lstnew(rst, ft_strlen(rst)));
+	return (ft_lstnew(rst, pf_strlen(rst)));
 }
 
 t_list	*ftprintf_handle_p(t_flags *spec, va_list args)
@@ -48,13 +48,13 @@ t_list	*ftprintf_handle_p(t_flags *spec, va_list args)
 	arg = va_arg(args, void*);
 	if (arg == 0)
 		return (arg_zero(spec));
-	tmp = ft_itoa_base_unsigned((long int)arg, 16, 0);
+	tmp = pf_itoa_base_unsigned((long int)arg, 16, 0);
 	if (spec->width == -1)
 		spec->width = 0;
-	len = MAX(spec->prec + 3, MAX((int)ft_strlen(tmp) + 3, spec->width + 1));
-	rst = ft_memalloc(sizeof(*tmp) * len);
-	i = ft_tabset(2);
-	while (!spec->flags[minus] && spec->width > i[0] + (int)ft_strlen(tmp) + 2)
+	len = MAX(spec->prec + 3, MAX((int)pf_strlen(tmp) + 3, spec->width + 1));
+	rst = pf_memalloc(sizeof(*tmp) * len);
+	i = pf_tabset(2);
+	while (!spec->flags[minus] && spec->width > i[0] + (int)pf_strlen(tmp) + 2)
 		rst[(i[0])++] = ' ';
 	rst[(i[0])++] = '0';
 	rst[(i[0])++] = 'x';
@@ -63,5 +63,5 @@ t_list	*ftprintf_handle_p(t_flags *spec, va_list args)
 	while (i[0] < spec->width)
 		rst[(i[0])++] = ' ';
 	ft_printf_utils_norme(&rst, i, tmp);
-	return (ft_lstnew(rst, ft_strlen(rst)));
+	return (ft_lstnew(rst, pf_strlen(rst)));
 }

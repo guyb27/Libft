@@ -17,9 +17,9 @@ static int	mallsize(t_flags *spec, char *arg)
 {
 	int		tmp;
 
-	if (spec->prec == -1 || spec->prec > (int)ft_strlen(arg))
-		spec->prec = ft_strlen(arg);
-	tmp = MIN(spec->prec, (int)ft_strlen(arg));
+	if (spec->prec == -1 || spec->prec > (int)pf_strlen(arg))
+		spec->prec = pf_strlen(arg);
+	tmp = MIN(spec->prec, (int)pf_strlen(arg));
 	return (MAX(tmp, spec->width));
 }
 
@@ -35,7 +35,7 @@ t_list		*ftprintf_handle_str(t_flags *spec, va_list args)
 	if (spec->size == l)
 		return (ft_lstnew(NULL, 0));
 	len = mallsize(spec, arg);
-	if ((rst = (char*)ft_memalloc(sizeof(*rst) * (len + 1))) == NULL)
+	if ((rst = (char*)pf_memalloc(sizeof(*rst) * (len + 1))) == NULL)
 		return (NULL);
 	i[0] = 0;
 	i[1] = 0;

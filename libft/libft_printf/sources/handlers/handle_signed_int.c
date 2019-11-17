@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 14:12:42 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 16:12:49 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 	if (spec->flags[space] && i == 0 && tmp[0] != '-')
 		return (1);
 	if (!spec->flags[zero])
-		return (i < len - (MAX((int)(ft_strlen(tmp) + spec->flags[plus]),
+		return (i < len - (MAX((int)(pf_strlen(tmp) + spec->flags[plus]),
 						spec->prec - spec->flags[space])));
 	else
 	{
@@ -51,7 +51,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 		else
 		{
 			if (spec->prec < spec->width)
-				return (i < spec->width - MAX(spec->prec, (int)ft_strlen(tmp))
+				return (i < spec->width - MAX(spec->prec, (int)pf_strlen(tmp))
 						+ spec->flags[space]);
 			else
 				return (0);
@@ -61,15 +61,15 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 
 static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
-	if (spec->flags[minus] && (int)ft_strlen(tmp) < spec->prec)
+	if (spec->flags[minus] && (int)pf_strlen(tmp) < spec->prec)
 	{
 		if (spec->prec > -1)
-			return (i[0] - (tmp[0] == '-') < spec->prec - (int)ft_strlen(tmp));
+			return (i[0] - (tmp[0] == '-') < spec->prec - (int)pf_strlen(tmp));
 		else
 			return (0);
 	}
 	else
-		return (i[0] < ((int)len - ((int)ft_strlen(tmp) - i[1])));
+		return (i[0] < ((int)len - ((int)pf_strlen(tmp) - i[1])));
 }
 
 static intmax_t		get_arg(t_flags *spec, va_list args)
@@ -106,11 +106,11 @@ t_list				*ftprintf_handle_signed_int(t_flags *spec, va_list args)
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
-		return (zeroprec(spec));
-	tmp = ft_itoa(arg);
+		return (ftprintf_zeroprec(spec));
+	tmp = pf_itoa(arg);
 	len = mallsize(spec, arg);
-	rst = ft_memalloc(sizeof(*rst) * (len + 1));
-	i = ft_tabset(2);
+	rst = pf_memalloc(sizeof(*rst) * (len + 1));
+	i = pf_tabset(2);
 	while (is_space(spec, tmp, len, i[0]))
 		rst[(i[0])++] = ' ';
 	if (tmp[i[1]] == '-' || spec->flags[plus])

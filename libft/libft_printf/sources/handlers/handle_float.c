@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/28 12:27:47 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 14:20:17 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 15:57:09 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,14 +35,14 @@ static int				is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (spec->flags[minus])
 		return (0);
-	return (!spec->flags[zero] && i < len - (int)ft_strlen(tmp));
+	return (!spec->flags[zero] && i < len - (int)pf_strlen(tmp));
 }
 
 static int				is_zero(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (spec->flags[minus])
 		return (0);
-	return (i < len - (int)ft_strlen(tmp));
+	return (i < len - (int)pf_strlen(tmp));
 }
 
 static long double		get_arg(t_flags *spec, va_list args)
@@ -67,10 +67,10 @@ t_list					*ftprintf_handle_float(t_flags *spec, va_list args)
 	int			*i;
 
 	arg = get_arg(spec, args);
-	tmp = ft_ftoa(arg, spec->prec);
+	tmp = pf_ftoa(arg, spec->prec);
 	len = mallsize(spec, arg);
-	rst = ft_memalloc(sizeof(*rst) * (len + 1));
-	i = ft_tabset(2);
+	rst = pf_memalloc(sizeof(*rst) * (len + 1));
+	i = pf_tabset(2);
 	while (is_space(spec, tmp, len, i[0]))
 		rst[(i[0])++] = ' ';
 	if (tmp[i[1]] == '-' || spec->flags[plus])

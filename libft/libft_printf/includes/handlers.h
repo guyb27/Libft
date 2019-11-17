@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/15 06:55:06 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/12 07:32:35 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 15:24:22 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ t_list					*ftprintf_handle_unsigned_int(t_flags *spec,
 t_list					*ftprintf_handle_hex(t_flags *spec, va_list args);
 t_list					*ftprintf_handle_oct(t_flags *spec, va_list args);
 t_list					*ftprintf_handle_float(t_flags *spec, va_list args);
-t_list					*zeroprec(t_flags *spec);
+t_list					*ftprintf_zeroprec(t_flags *spec);
 void					ft_printf_utils_norme(char **rst, int *i, char *tmp);
 
 #endif

@@ -32,7 +32,7 @@ t_list				*handle(char **str, va_list args, int a)
 	free(spec);
 	if (a > 1)
 	{
-		curr_list->str = ft_strnjoin(ft_strcut(*str, a - 1), curr_list->str,
+		curr_list->str = pf_strnjoin(pf_strcut(*str, a - 1), curr_list->str,
 				curr_list->size);
 		curr_list->size += a - 1;
 	}

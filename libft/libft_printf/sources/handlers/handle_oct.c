@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 14:18:03 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 16:16:08 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ static int			mallsize(intmax_t arg, t_flags *spec, char *tmp)
 
 	if (arg == 0)
 		spec->flags[hash] = 0;
-	len = MAX((int)ft_strlen(tmp) + spec->flags[hash],
+	len = MAX((int)pf_strlen(tmp) + spec->flags[hash],
 			(MAX(spec->width, spec->prec)));
 	return (len);
 }
@@ -27,7 +27,7 @@ static int			mallsize(intmax_t arg, t_flags *spec, char *tmp)
 static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (!spec->flags[zero])
-		return (i < len - (MAX((int)ft_strlen(tmp),
+		return (i < len - (MAX((int)pf_strlen(tmp),
 						spec->prec - spec->flags[hash]) + spec->flags[hash]));
 	else
 	{
@@ -36,7 +36,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 		else
 		{
 			if (spec->prec < spec->width)
-				return (i < spec->width - MAX(spec->prec, (int)ft_strlen(tmp))
+				return (i < spec->width - MAX(spec->prec, (int)pf_strlen(tmp))
 						- spec->flags[hash]);
 			else
 				return (0);
@@ -46,15 +46,15 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 
 static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
-	if (spec->flags[minus] && (int)ft_strlen(tmp) < spec->prec)
+	if (spec->flags[minus] && (int)pf_strlen(tmp) < spec->prec)
 	{
 		if (spec->prec > -1)
-			return (i[0] < spec->prec - (int)ft_strlen(tmp));
+			return (i[0] < spec->prec - (int)pf_strlen(tmp));
 		else
 			return (i[0] < spec->flags[hash]);
 	}
 	else
-		return (i[0] < len - ((int)ft_strlen(tmp) - i[1]));
+		return (i[0] < len - ((int)pf_strlen(tmp) - i[1]));
 }
 
 static intmax_t		get_arg(t_flags *spec, va_list args)
@@ -89,10 +89,10 @@ t_list				*ftprintf_handle_oct(t_flags *spec, va_list args)
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
-		return (zeroprec(spec));
-	tmp = ft_itoa_base_unsigned(arg, 8, 0);
+		return (ftprintf_zeroprec(spec));
+	tmp = pf_itoa_base_unsigned(arg, 8, 0);
 	len = mallsize(arg, spec, tmp);
-	rst = ft_memalloc(sizeof(*rst) * (len + 1));
+	rst = pf_memalloc(sizeof(*rst) * (len + 1));
 	i[0] = 0;
 	i[1] = 0;
 	while (is_space(spec, tmp, len, i[0]) && !spec->flags[minus])

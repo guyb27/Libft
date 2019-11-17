@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2018/12/02 16:03:36 by qcharpen    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/17 15:55:06 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,23 +17,23 @@ FLAGS = -Werror -Wextra -Wall
 
 LIBFT_PATH = ./sources/libft
 
-LIBFT = sources/libft/ft_bzero.c \
-		sources/libft/ft_isdigit.c \
-		sources/libft/ft_isinstr.c \
-		sources/libft/ft_memalloc.c \
-		sources/libft/ft_tabset.c \
-		sources/libft/ft_memdel.c \
-		sources/libft/ft_strchr.c \
-		sources/libft/ft_strdup.c \
-		sources/libft/ft_strcut.c \
-		sources/libft/ft_strlen.c \
-		sources/libft/ft_strnjoin.c \
-		sources/libft/ft_itoa.c \
-		sources/libft/ft_ftoa.c \
-		sources/libft/ft_itoa_base.c \
-		sources/libft/ft_strisdigit.c \
-		sources/libft/ft_strsub.c \
-		sources/libft/ft_strnew.c \
+LIBFT = sources/libft/pf_bzero.c \
+		sources/libft/pf_isdigit.c \
+		sources/libft/pf_isinstr.c \
+		sources/libft/pf_memalloc.c \
+		sources/libft/pf_tabset.c \
+		sources/libft/pf_memdel.c \
+		sources/libft/pf_strchr.c \
+		sources/libft/pf_strdup.c \
+		sources/libft/pf_strcut.c \
+		sources/libft/pf_strlen.c \
+		sources/libft/pf_strnjoin.c \
+		sources/libft/pf_itoa.c \
+		sources/libft/pf_ftoa.c \
+		sources/libft/pf_itoa_base.c \
+		sources/libft/pf_strisdigit.c \
+		sources/libft/pf_strsub.c \
+		sources/libft/pf_strnew.c \
 
 LISTS_PATH = ./sources/lists
 

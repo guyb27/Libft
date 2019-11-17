@@ -19,7 +19,7 @@ static void		lstjoin(t_list *lst2, t_list **lst)
 	int			j;
 	char		*s;
 
-	s = ft_memalloc(sizeof((*lst)->str) * ((*lst)->size + lst2->size + 1));
+	s = pf_memalloc(sizeof((*lst)->str) * ((*lst)->size + lst2->size + 1));
 	i = 0;
 	j = 0;
 	while (i < (*lst)->size)

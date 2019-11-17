@@ -21,7 +21,7 @@ t_list	*ftprintf_handle_percent(t_flags *spec, va_list args)
 
 	(void)args;
 	len = MAX(1, spec->width);
-	rst = ft_memalloc(sizeof(*rst) * (len + 1));
+	rst = pf_memalloc(sizeof(*rst) * (len + 1));
 	i = 0;
 	if (spec->flags[minus])
 		rst[i++] = '%';
@@ -30,5 +30,5 @@ t_list	*ftprintf_handle_percent(t_flags *spec, va_list args)
 	if (!spec->flags[minus])
 		rst[i++] = '%';
 	rst[i] = '\0';
-	return (ft_lstnew(rst, ft_strlen(rst)));
+	return (ft_lstnew(rst, pf_strlen(rst)));
 }

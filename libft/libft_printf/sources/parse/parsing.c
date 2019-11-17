@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/27 15:09:16 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/17 14:39:41 by qcharpen    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 17:07:51 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,14 +17,14 @@ t_flags		*parse(char *arg)
 {
 	t_flags		*spec;
 
-	if ((spec = (t_flags*)ft_memalloc(sizeof(*spec))) == NULL)
+	if ((spec = (t_flags*)pf_memalloc(sizeof(*spec))) == NULL)
 		return (NULL);
 	set_t_flags(spec);
 	while (!is_conv(*arg) && (*arg))
 	{
 		if (is_flag(*arg))
 			def_flags(*arg, spec);
-		else if (ft_isdigit(*arg))
+		else if (pf_isdigit(*arg))
 			spec->width = mini_atoi(&arg);
 		else if (*arg == '.')
 		{
@@ -77,7 +77,7 @@ int			mini_atoi(char **arg)
 	int		rst;
 
 	rst = 0;
-	while (ft_isdigit(**arg))
+	while (pf_isdigit(**arg))
 	{
 		rst *= 10;
 		rst += **arg - '0';
