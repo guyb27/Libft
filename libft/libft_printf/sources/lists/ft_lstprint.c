@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/09/29 21:35:10 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/14 22:52:51 by qcharpen    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 14:00:31 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,6 @@ static void		lstjoin(t_list *lst2, t_list **lst)
 
 static t_list	*lstjoin_free(t_list *lst)
 {
-	t_list		*rst;
 	t_list		*tmp;
 
 	while (lst->next)
@@ -56,6 +55,7 @@ int				ft_lstfprint(void **str, t_list *lst)
 	t_list		*tmp;
 	int			fd;
 
+	tmp = NULL;
 	if (access((char*)*str, W_OK))
 	{
 		if ((fd = open((char*)*str,
@@ -63,14 +63,14 @@ int				ft_lstfprint(void **str, t_list *lst)
 		{
 			tmp = lstjoin_free(lst);
 			write(fd, tmp->str, tmp->size);
+			free(tmp->str);
 		}
 		else
 			lst->size = 0;
 	}
 	else
 		lst->size = 0;
-	free(tmp->str);
-	return (tmp->size);
+	return (tmp ? tmp->size : 0);
 }
 
 int				ft_lstsprint(void **str, t_list *lst)

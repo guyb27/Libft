@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 16:56:48 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/26 08:36:50 by qcharpen    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 13:56:06 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static uintmax_t	ft_pow(uintmax_t nb, int pow)
 		return (1 / ft_pow(nb, -pow));
 }
 
-static int			size_i(uintmax_t n, int base)
+static int			size_i(uintmax_t n, uintmax_t base)
 {
 	int		i;
 

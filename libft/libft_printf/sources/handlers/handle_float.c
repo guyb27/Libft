@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/28 12:27:47 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/15 01:33:15 by qcharpen    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 14:20:17 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,14 +35,14 @@ static int				is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (spec->flags[minus])
 		return (0);
-	return (!spec->flags[zero] && i < len - ft_strlen(tmp));
+	return (!spec->flags[zero] && i < len - (int)ft_strlen(tmp));
 }
 
 static int				is_zero(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (spec->flags[minus])
 		return (0);
-	return (i < len - ft_strlen(tmp));
+	return (i < len - (int)ft_strlen(tmp));
 }
 
 static long double		get_arg(t_flags *spec, va_list args)

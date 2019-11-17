@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/17 03:14:19 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/17 21:54:23 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 14:05:43 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@ t_list	*ftprintf_handle_percent(t_flags *spec, va_list args)
 	int		len;
 	int		i;
 
+	(void)args;
 	len = MAX(1, spec->width);
 	rst = ft_memalloc(sizeof(*rst) * (len + 1));
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/17 04:06:07 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/12 06:13:13 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 14:09:05 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,9 +17,9 @@ static int	mallsize(t_flags *spec, char *arg)
 {
 	int		tmp;
 
-	if (spec->prec == -1 || spec->prec > ft_strlen(arg))
+	if (spec->prec == -1 || spec->prec > (int)ft_strlen(arg))
 		spec->prec = ft_strlen(arg);
-	tmp = MIN(spec->prec, ft_strlen(arg));
+	tmp = MIN(spec->prec, (int)ft_strlen(arg));
 	return (MAX(tmp, spec->width));
 }
 
@@ -29,7 +29,6 @@ t_list		*ftprintf_handle_str(t_flags *spec, va_list args)
 	char	*rst;
 	int		i[2];
 	int		len;
-	t_list	*ret;
 
 	if ((arg = va_arg(args, char*)) == NULL)
 		arg = "(null)";

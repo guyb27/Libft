@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/12 07:17:56 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 14:12:42 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 		else
 		{
 			if (spec->prec < spec->width)
-				return (i < spec->width - MAX(spec->prec, ft_strlen(tmp))
+				return (i < spec->width - MAX(spec->prec, (int)ft_strlen(tmp))
 						+ spec->flags[space]);
 			else
 				return (0);
@@ -61,15 +61,15 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 
 static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
-	if (spec->flags[minus] && ft_strlen(tmp) < spec->prec)
+	if (spec->flags[minus] && (int)ft_strlen(tmp) < spec->prec)
 	{
 		if (spec->prec > -1)
-			return (i[0] - (tmp[0] == '-') < spec->prec - ft_strlen(tmp));
+			return (i[0] - (tmp[0] == '-') < spec->prec - (int)ft_strlen(tmp));
 		else
 			return (0);
 	}
 	else
-		return (i[0] < len - (ft_strlen(tmp) - i[1]));
+		return (i[0] < ((int)len - ((int)ft_strlen(tmp) - i[1])));
 }
 
 static intmax_t		get_arg(t_flags *spec, va_list args)
