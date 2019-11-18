@@ -13,6 +13,7 @@ $(EXEC):
 	@($(MAKE) -C $(LIBFT_STD_DIR))
 	@echo "Compilation de la libft_printf"
 	@($(MAKE) -C $(LIBFT_PRINTF_DIR))
+	ar rcs lib.a libft_std/obj/*.o libft_printf/obj/*.o
 
 clean:
 	@($(MAKE) $@ -C $(LIBFT_STD_DIR))

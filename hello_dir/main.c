@@ -5,8 +5,8 @@
 
 int main(void)
 {
-	Hello();
-	return EXIT_SUCCESS;
+		Hello();
+			return EXIT_SUCCESS;
 }
-
+					
 

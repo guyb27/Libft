@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/18 11:49:48 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 14:46:26 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -14,6 +14,8 @@
 NAME = libftprintf.a
 
 FLAGS = -Werror -Wextra -Wall
+
+OBJ_PATH = ./obj
 
 PF_LIBFT_PATH = ./sources/libft
 
@@ -61,23 +63,25 @@ HANDLERS = $(HANDLERS_PATH)/ft_printf.c \
 SRCS = $(LIBFT) $(LISTS) $(PARSE)
 
 OBJ = $(LIBFT:.c=.o) $(LISTS:.c=.o) $(PARSE:.c=.o) $(HANDLERS:.c=.o)
+#OBJ = $(addprefix $(OBJS_PATH),$(OBJS_NAME))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
+	@mv $(OBJ) obj/
 
 $(PF_LIBFT_PATH)%.o: $(LIBFT)%.c
-	@gcc -c $(FLAGS) $(LIBFT)
+	gcc $(FLAGS) -o obj/lol.o -c $(LIBFT)
 
 $(PF_LISTS_PATH)%.o: $(LISTS)%.c
-	@gcc -c $(FLAGS) $(LISTS)
+	@gcc $(FLAGS) -o obj/l.o -c $(LISTS)
 
 $(PARSE_PATH)%.o: $(PARSE)%.c
-	@gcc -c $(FLAGS) $(PARSE)
+	@gcc $(FLAGS) -o obj/lo.o -c $(PARSE)
 
 $(HANDLERS_PATH)%.o: $(HANDLERS)%.c
-	@gcc - c $(FLAGS) $(HANDLERS)
+	@gcc $(FLAGS) -o obj/k.o -c $(HANDLERS)
 
 valgrind:
 	@gcc -ggdb3 ./sources/*/*.c test.c -I includes
