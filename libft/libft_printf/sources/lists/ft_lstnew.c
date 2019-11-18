@@ -13,11 +13,11 @@
 
 #include "../../includes/lists.h"
 
-t_list	*ft_lstnew(char *str, size_t len)
+t_printf	*ft_lstnew(char *str, size_t len)
 {
-	t_list	*new;
+	t_printf	*new;
 
-	new = (t_list*)malloc(sizeof(*new));
+	new = (t_printf*)malloc(sizeof(*new));
 	new->str = str;
 	new->size = len;
 	new->next = NULL;

@@ -13,9 +13,9 @@
 
 #include "../../includes/lists.h"
 
-void	ft_lstaddend(t_list **alst, t_list *nxt)
+void	ft_lstaddend(t_printf **alst, t_printf *nxt)
 {
-	t_list	*curr;
+	t_printf	*curr;
 
 	if (!*alst)
 		*alst = nxt;

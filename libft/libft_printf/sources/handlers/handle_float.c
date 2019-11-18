@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/28 12:27:47 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 15:57:09 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:37:23 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static int				mallsize(t_flags *spec, long double i)
 {
-	int		rst;
+	int					rst;
 
 	rst = 1;
 	if (i < 0 || spec->flags[plus] || spec->flags[space])
@@ -47,7 +47,7 @@ static int				is_zero(t_flags *spec, char *tmp, intmax_t len, int i)
 
 static long double		get_arg(t_flags *spec, va_list args)
 {
-	long double	arg;
+	long double			arg;
 
 	if (spec->flags[maj_l])
 		arg = va_arg(args, long double);
@@ -58,13 +58,13 @@ static long double		get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_list					*ftprintf_handle_float(t_flags *spec, va_list args)
+t_printf				*ftprintf_handle_float(t_flags *spec, va_list args)
 {
-	char		*rst;
-	char		*tmp;
-	long double	arg;
-	int			len;
-	int			*i;
+	char				*rst;
+	char				*tmp;
+	long double			arg;
+	int					len;
+	int					*i;
 
 	arg = get_arg(spec, args);
 	tmp = pf_ftoa(arg, spec->prec);

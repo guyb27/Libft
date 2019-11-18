@@ -6,14 +6,14 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/09/29 21:35:10 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 14:00:31 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:45:02 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/lists.h"
 
-static void		lstjoin(t_list *lst2, t_list **lst)
+static void		lstjoin(t_printf *lst2, t_printf **lst)
 {
 	int			i;
 	int			j;
@@ -35,9 +35,9 @@ static void		lstjoin(t_list *lst2, t_list **lst)
 	(*lst)->str = s;
 }
 
-static t_list	*lstjoin_free(t_list *lst)
+static t_printf	*lstjoin_free(t_printf *lst)
 {
-	t_list		*tmp;
+	t_printf	*tmp;
 
 	while (lst->next)
 	{
@@ -50,9 +50,9 @@ static t_list	*lstjoin_free(t_list *lst)
 	return (lst);
 }
 
-int				ft_lstfprint(void **str, t_list *lst)
+int				ft_lstfprint(void **str, t_printf *lst)
 {
-	t_list		*tmp;
+	t_printf	*tmp;
 	int			fd;
 
 	tmp = NULL;
@@ -73,9 +73,9 @@ int				ft_lstfprint(void **str, t_list *lst)
 	return (tmp ? tmp->size : 0);
 }
 
-int				ft_lstsprint(void **str, t_list *lst)
+int				ft_lstsprint(void **str, t_printf *lst)
 {
-	t_list		*tmp;
+	t_printf	*tmp;
 
 	tmp = lst;
 	tmp = lstjoin_free(lst);
@@ -83,9 +83,9 @@ int				ft_lstsprint(void **str, t_list *lst)
 	return (tmp->size);
 }
 
-int				ft_lstprint(void **fd, t_list *lst)
+int				ft_lstprint(void **fd, t_printf *lst)
 {
-	t_list		*tmp;
+	t_printf	*tmp;
 
 	tmp = lstjoin_free(lst);
 	write(*((int*)fd[0]), tmp->str, tmp->size);

@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/17 15:55:06 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 10:18:16 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,12 +17,10 @@ FLAGS = -Werror -Wextra -Wall
 
 LIBFT_PATH = ./sources/libft
 
-LIBFT = sources/libft/pf_bzero.c \
-		sources/libft/pf_isdigit.c \
+LIBFT = sources/libft/pf_isdigit.c \
 		sources/libft/pf_isinstr.c \
 		sources/libft/pf_memalloc.c \
 		sources/libft/pf_tabset.c \
-		sources/libft/pf_memdel.c \
 		sources/libft/pf_strchr.c \
 		sources/libft/pf_strdup.c \
 		sources/libft/pf_strcut.c \
@@ -31,7 +29,6 @@ LIBFT = sources/libft/pf_bzero.c \
 		sources/libft/pf_itoa.c \
 		sources/libft/pf_ftoa.c \
 		sources/libft/pf_itoa_base.c \
-		sources/libft/pf_strisdigit.c \
 		sources/libft/pf_strsub.c \
 		sources/libft/pf_strnew.c \
 

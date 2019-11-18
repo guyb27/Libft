@@ -13,7 +13,7 @@
 
 #include "../../includes/ft_printf.h"
 
-t_list	*arg_zero(t_flags *spec)
+t_printf	*arg_zero(t_flags *spec)
 {
 	char	*rst;
 	int		len;
@@ -37,7 +37,7 @@ t_list	*arg_zero(t_flags *spec)
 	return (ft_lstnew(rst, pf_strlen(rst)));
 }
 
-t_list	*ftprintf_handle_p(t_flags *spec, va_list args)
+t_printf	*ftprintf_handle_p(t_flags *spec, va_list args)
 {
 	char	*rst;
 	char	*tmp;

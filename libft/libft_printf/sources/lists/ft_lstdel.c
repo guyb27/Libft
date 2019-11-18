@@ -13,9 +13,9 @@
 
 #include "../../includes/lists.h"
 
-void	ft_lstdel(t_list **alst)
+void	ft_lstdel(t_printf **alst)
 {
-	t_list	*next;
+	t_printf	*next;
 
 	while (*alst)
 	{

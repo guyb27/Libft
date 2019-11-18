@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:12:49 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:41:14 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static int			mallsize(t_flags *spec, intmax_t i)
 {
-	int		rst;
+	int				rst;
 
 	rst = 1;
 	if (i < 0 || spec->flags[plus] || spec->flags[space])
@@ -74,7 +74,7 @@ static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 
 static intmax_t		get_arg(t_flags *spec, va_list args)
 {
-	intmax_t	arg;
+	intmax_t		arg;
 
 	arg = va_arg(args, intmax_t);
 	if (spec->conv == 'D')
@@ -96,13 +96,13 @@ static intmax_t		get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_list				*ftprintf_handle_signed_int(t_flags *spec, va_list args)
+t_printf			*ftprintf_handle_signed_int(t_flags *spec, va_list args)
 {
-	char		*rst;
-	char		*tmp;
-	intmax_t	arg;
-	int			len;
-	int			*i;
+	char			*rst;
+	char			*tmp;
+	intmax_t		arg;
+	int				len;
+	int				*i;
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)

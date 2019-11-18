@@ -6,16 +6,16 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:16:08 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:40:01 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int			mallsize(intmax_t arg, t_flags *spec, char *tmp)
+static int				mallsize(intmax_t arg, t_flags *spec, char *tmp)
 {
-	int		len;
+	int					len;
 
 	if (arg == 0)
 		spec->flags[hash] = 0;
@@ -24,7 +24,7 @@ static int			mallsize(intmax_t arg, t_flags *spec, char *tmp)
 	return (len);
 }
 
-static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
+static int				is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (!spec->flags[zero])
 		return (i < len - (MAX((int)pf_strlen(tmp),
@@ -44,7 +44,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 	}
 }
 
-static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
+static int				is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
 	if (spec->flags[minus] && (int)pf_strlen(tmp) < spec->prec)
 	{
@@ -57,9 +57,9 @@ static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 		return (i[0] < len - ((int)pf_strlen(tmp) - i[1]));
 }
 
-static intmax_t		get_arg(t_flags *spec, va_list args)
+static intmax_t			get_arg(t_flags *spec, va_list args)
 {
-	intmax_t	arg;
+	intmax_t			arg;
 
 	arg = va_arg(args, intmax_t);
 	if (spec->size == hh && spec->conv == 'o')
@@ -79,13 +79,13 @@ static intmax_t		get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_list				*ftprintf_handle_oct(t_flags *spec, va_list args)
+t_printf				*ftprintf_handle_oct(t_flags *spec, va_list args)
 {
-	char		*rst;
-	char		*tmp;
-	intmax_t	arg;
-	int			len;
-	int			i[2];
+	char				*rst;
+	char				*tmp;
+	intmax_t			arg;
+	int					len;
+	int					i[2];
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)

@@ -6,18 +6,18 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:15:07 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:43:36 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-t_list				*ftprintf_zeroprec(t_flags *spec)
+t_printf			*ftprintf_zeroprec(t_flags *spec)
 {
-	char	*rst;
-	int		len;
-	int		i;
+	char			*rst;
+	int				len;
+	int				i;
 
 	len = MAX(spec->width, ((pf_isinstr("dDi", spec->conv) &&
 					(spec->flags[space] || spec->flags[plus])) ||
@@ -26,7 +26,7 @@ t_list				*ftprintf_zeroprec(t_flags *spec)
 	i = 0;
 	if (spec->flags[minus] &&
 			((pf_isinstr("dDi", spec->conv) && spec->flags[plus]) ||
-			 (pf_isinstr("oO", spec->conv && spec->flags[hash]))))
+			(pf_isinstr("oO", spec->conv && spec->flags[hash]))))
 		rst[i++] = (pf_isinstr("dDi", spec->conv) ? '+' : '0');
 	while (i < len - (pf_isinstr("dDoOi", spec->conv) && ((spec->flags[plus])
 					|| spec->flags[hash])) && !spec->flags[minus])
@@ -72,7 +72,7 @@ static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 
 static uintmax_t	get_arg(t_flags *spec, va_list args)
 {
-	uintmax_t	arg;
+	uintmax_t		arg;
 
 	arg = va_arg(args, uintmax_t);
 	if (spec->conv == 'U')
@@ -94,13 +94,13 @@ static uintmax_t	get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_list				*ftprintf_handle_unsigned_int(t_flags *spec, va_list args)
+t_printf			*ftprintf_handle_unsigned_int(t_flags *spec, va_list args)
 {
-	char		*rst;
-	char		*tmp;
-	uintmax_t	arg;
-	int			len;
-	int			i[2];
+	char			*rst;
+	char			*tmp;
+	uintmax_t		arg;
+	int				len;
+	int				i[2];
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)

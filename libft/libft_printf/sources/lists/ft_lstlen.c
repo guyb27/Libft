@@ -13,7 +13,7 @@
 
 #include "../../includes/lists.h"
 
-size_t		ft_lstlen(t_list *list)
+size_t		ft_lstlen(t_printf *list)
 {
 	size_t	len;
 

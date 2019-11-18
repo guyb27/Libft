@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/05 18:29:11 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 17:07:12 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:18:08 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,6 @@ char			*pf_strchr(const char *s, int c);
 char			*pf_strdup(const char *src);
 char			*pf_strcut(const char *s, size_t i);
 size_t			pf_strlen(const char *s);
-int				pf_strisdigit(char *str);//A DEL
 char			*pf_strsub(const char *s, unsigned int start, size_t len);//A DEL
 char			*pf_strjoin_len(const char *s1, const char *s2, int len);
 char			*pf_strjoin_free_len(char *s1, char *s2, int len);
@@ -32,9 +31,7 @@ int				pf_isdigit(int c);
 int				pf_isinstr(char *str, char c);
 char			*pf_strnjoin(char *s1, char *s2, int n);
 
-void			pf_bzero(void *s, size_t n);//A DEL
 void			*pf_memalloc(size_t size);
 void			*pf_tabset(size_t len);
-void			pf_memdel(void **ap);//A DEL
 
 #endif

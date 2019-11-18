@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:15:49 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 10:38:47 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,7 @@ static void		flag_hash(char **rst, int *i, t_flags *spec)
 	}
 }
 
-t_list			*ftprintf_handle_hex(t_flags *spec, va_list args)
+t_printf		*ftprintf_handle_hex(t_flags *spec, va_list args)
 {
 	char		*rst;
 	char		*tmp;
