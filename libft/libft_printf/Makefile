@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/18 10:18:16 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 10:51:13 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -48,16 +48,16 @@ PARSE = sources/parse/parse_tests.c \
 HANDLERS_PATH = ./sources/handlers
 
 HANDLERS = sources/handlers/ft_printf.c \
-		   sources/handlers/handle.c \
-		   sources/handlers/handle_percent.c \
-		   sources/handlers/handle_char.c \
-		   sources/handlers/handle_str.c \
-		   sources/handlers/handle_signed_int.c \
-		   sources/handlers/handle_unsigned_int.c \
-		   sources/handlers/handle_hex.c \
-		   sources/handlers/handle_oct.c \
-		   sources/handlers/handle_p.c \
-		   sources/handlers/handle_float.c \
+		   sources/handlers/pf_handle.c \
+		   sources/handlers/pf_handle_percent.c \
+		   sources/handlers/pf_handle_char.c \
+		   sources/handlers/pf_handle_str.c \
+		   sources/handlers/pf_handle_signed_int.c \
+		   sources/handlers/pf_handle_unsigned_int.c \
+		   sources/handlers/pf_handle_hex.c \
+		   sources/handlers/pf_handle_oct.c \
+		   sources/handlers/pf_handle_p.c \
+		   sources/handlers/pf_handle_float.c \
 
 
 SRCS = $(LIBFT) $(LISTS) $(PARSE)

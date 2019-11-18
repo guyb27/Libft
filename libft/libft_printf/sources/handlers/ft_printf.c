@@ -25,7 +25,7 @@ int	ft_printf(const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = ft_inner_printf(ft_lstprint, &tmp, args, format);
+	ret = pf_inner_printf(ft_lstprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }
@@ -40,7 +40,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	if (!format || !*format || fd < 0)
 		return (0);
 	va_start(args, format);
-	ret = ft_inner_printf(ft_lstprint, &tmp, args, format);
+	ret = pf_inner_printf(ft_lstprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }
@@ -55,7 +55,7 @@ int	ft_sprintf(char **str, const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = ft_inner_printf(ft_lstsprint, &tmp, args, format);
+	ret = pf_inner_printf(ft_lstsprint, &tmp, args, format);
 	*str = tmp;
 	va_end(args);
 	return (ret);
@@ -71,12 +71,12 @@ int	ft_fprintf(char *str, const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = ft_inner_printf(ft_lstfprint, &tmp, args, format);
+	ret = pf_inner_printf(ft_lstfprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }
 
-int	ft_inner_printf(int (*f)(void**, t_printf*), void **fd, va_list args,
+int	pf_inner_printf(int (*f)(void**, t_printf*), void **fd, va_list args,
 		const char *format)
 {
 	char		*str;
