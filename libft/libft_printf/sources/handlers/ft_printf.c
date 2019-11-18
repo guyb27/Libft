@@ -55,7 +55,7 @@ int	ft_sprintf(char **str, const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = pf_inner_printf(ft_lstsprint, &tmp, args, format);
+	ret = pf_inner_printf(pf_lstsprint, &tmp, args, format);
 	*str = tmp;
 	va_end(args);
 	return (ret);
@@ -71,7 +71,7 @@ int	ft_fprintf(char *str, const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = pf_inner_printf(ft_lstfprint, &tmp, args, format);
+	ret = pf_inner_printf(pf_lstfprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }

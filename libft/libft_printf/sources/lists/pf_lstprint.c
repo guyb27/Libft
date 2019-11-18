@@ -50,7 +50,7 @@ static t_printf	*lstjoin_free(t_printf *lst)
 	return (lst);
 }
 
-int				ft_lstfprint(void **str, t_printf *lst)
+int				pf_lstfprint(void **str, t_printf *lst)
 {
 	t_printf	*tmp;
 	int			fd;
@@ -73,7 +73,7 @@ int				ft_lstfprint(void **str, t_printf *lst)
 	return (tmp ? tmp->size : 0);
 }
 
-int				ft_lstsprint(void **str, t_printf *lst)
+int				pf_lstsprint(void **str, t_printf *lst)
 {
 	t_printf	*tmp;
 
