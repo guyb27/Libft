@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:43:36 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:32:13 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ t_printf			*pf_zeroprec(t_flags *spec)
 	return (pf_lstnew(rst, len));
 }
 
-static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
+static int			pf_is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (!spec->flags[zero])
 		return (i < len - (MAX((int)pf_strlen(tmp),
@@ -57,7 +57,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 	}
 }
 
-static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
+static int			pf_is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
 	if (spec->flags[minus] && (intmax_t)pf_strlen(tmp) < len)
 	{
@@ -70,7 +70,7 @@ static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 		return (i[0] < len - ((int)pf_strlen(tmp) - i[1]));
 }
 
-static uintmax_t	get_arg(t_flags *spec, va_list args)
+static uintmax_t	pf_get_arg(t_flags *spec, va_list args)
 {
 	uintmax_t		arg;
 
@@ -102,7 +102,7 @@ t_printf			*pf_handle_unsigned_int(t_flags *spec, va_list args)
 	int				len;
 	int				i[2];
 
-	arg = get_arg(spec, args);
+	arg = pf_get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
 		return (pf_zeroprec(spec));
 	tmp = pf_itoa_base_unsigned((uintmax_t)arg, 10, 0);
@@ -110,9 +110,9 @@ t_printf			*pf_handle_unsigned_int(t_flags *spec, va_list args)
 	rst = pf_memalloc(sizeof(*rst) * (len + 1));
 	i[0] = 0;
 	i[1] = 0;
-	while (is_space(spec, tmp, len, i[0]) && !spec->flags[minus])
+	while (pf_is_space(spec, tmp, len, i[0]) && !spec->flags[minus])
 		rst[(i[0])++] = ' ';
-	while (is_zero(spec, tmp, len, i))
+	while (pf_is_zero(spec, tmp, len, i))
 		rst[i[0]++] = '0';
 	while (tmp[i[1]])
 		rst[i[0]++] = tmp[i[1]++];

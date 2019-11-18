@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/15 06:55:06 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 11:04:06 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:12:09 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,6 @@ typedef struct			s_handlers {
 }						t_handlers;
 
 t_printf					*pf_handle(char **str, va_list args, int i);
-t_printf					*select_conv(t_flags *spec, va_list args);
 t_printf					*pf_handle_percent(t_flags *spec, va_list args);
 t_printf					*pf_handle_char(t_flags *spec, va_list args);
 t_printf					*pf_handle_str(t_flags *spec, va_list args);

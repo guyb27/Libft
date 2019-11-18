@@ -6,26 +6,26 @@
 /*   By: gmadec <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 16:14:00 by gmadec       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:14:11 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:36:33 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-static uintmax_t	ft_pow(uintmax_t nb, int pow)
+static uintmax_t	pf_pow(uintmax_t nb, int pow)
 {
 	if (nb == 0)
 		return (0);
 	if (pow == 0)
 		return (1);
 	else if (pow > 0)
-		return (nb * ft_pow(nb, pow - 1));
+		return (nb * pf_pow(nb, pow - 1));
 	else
-		return (1 / ft_pow(nb, -pow));
+		return (1 / pf_pow(nb, -pow));
 }
 
-static int			size_i(uintmax_t n, uintmax_t base)
+static int			pf_size_i(uintmax_t n, uintmax_t base)
 {
 	int		i;
 
@@ -38,11 +38,11 @@ static int			size_i(uintmax_t n, uintmax_t base)
 	return (i);
 }
 
-static char			nbrbase(uintmax_t n, int i, int base, int maj)
+static char			pf_nbrbase(uintmax_t n, int i, int base, int maj)
 {
 	int		nbr;
 
-	nbr = (uintmax_t)ABS((n / ft_pow(base, i)));
+	nbr = (uintmax_t)ABS((n / pf_pow(base, i)));
 	if (nbr < 10)
 		return (nbr + '0');
 	else
@@ -60,15 +60,15 @@ char				*pf_itoa_base_unsigned(uintmax_t n, int base, int maj)
 	int		i;
 	int		a;
 
-	i = size_i(n, base);
+	i = pf_size_i(n, base);
 	if (!(str = (char*)malloc(sizeof(*str) * (i + 1))))
 		return (NULL);
 	a = 0;
 	while (i > 0)
 	{
 		i--;
-		str[a] = nbrbase(n, i, base, maj);
-		n = n % ft_pow(base, i);
+		str[a] = pf_nbrbase(n, i, base, maj);
+		n = n % pf_pow(base, i);
 		a++;
 	}
 	str[a] = 0;

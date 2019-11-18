@@ -6,14 +6,14 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:38:47 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:21:00 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int		is_space(t_flags *spec, char *tmp, intmax_t len, int i)
+static int		pf_is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (!spec->flags[zero])
 		return (i < len - (MAX((int)pf_strlen(tmp),
@@ -33,7 +33,7 @@ static int		is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 	}
 }
 
-static int		is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
+static int		pf_is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
 	if (spec->flags[minus] && (int)pf_strlen(tmp) < spec->prec)
 	{
@@ -46,7 +46,7 @@ static int		is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 		return (i[0] < len - ((int)pf_strlen(tmp) - i[1]));
 }
 
-static intmax_t	get_arg(t_flags *spec, va_list args)
+static intmax_t	pf_get_arg(t_flags *spec, va_list args)
 {
 	intmax_t	arg;
 
@@ -70,7 +70,7 @@ static intmax_t	get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-static void		flag_hash(char **rst, int *i, t_flags *spec)
+static void		pf_flag_hash(char **rst, int *i, t_flags *spec)
 {
 	if (spec->flags[hash])
 	{
@@ -87,7 +87,7 @@ t_printf		*pf_handle_hex(t_flags *spec, va_list args)
 	int			len;
 	int			*i;
 
-	arg = get_arg(spec, args);
+	arg = pf_get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
 		return (pf_zeroprec(spec));
 	tmp = pf_itoa_base_unsigned(arg, 16, spec->conv == 'X');
@@ -95,10 +95,10 @@ t_printf		*pf_handle_hex(t_flags *spec, va_list args)
 			(MAX(spec->width, spec->prec + 2 * spec->flags[hash])));
 	rst = pf_memalloc(sizeof(*rst) * (len + 1));
 	i = pf_tabset(2);
-	while (is_space(spec, tmp, len, i[0]) && !spec->flags[minus])
+	while (pf_is_space(spec, tmp, len, i[0]) && !spec->flags[minus])
 		rst[(i[0])++] = ' ';
-	flag_hash(&rst, &i[0], spec);
-	while (is_zero(spec, tmp, len, i))
+	pf_flag_hash(&rst, &i[0], spec);
+	while (pf_is_zero(spec, tmp, len, i))
 		rst[i[0]++] = '0';
 	while (tmp[i[1]])
 		rst[i[0]++] = tmp[i[1]++];

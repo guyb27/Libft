@@ -6,14 +6,14 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 08:26:31 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:41:14 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:25:21 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-static int			mallsize(t_flags *spec, intmax_t i)
+static int			pf_mallsize(t_flags *spec, intmax_t i)
 {
 	int				rst;
 
@@ -33,7 +33,7 @@ static int			mallsize(t_flags *spec, intmax_t i)
 	return (rst);
 }
 
-static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
+static int			pf_is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 {
 	if (spec->flags[minus] && !(spec->flags[space] && i == 0))
 		return (0);
@@ -59,7 +59,7 @@ static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
 	}
 }
 
-static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
+static int			pf_is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 {
 	if (spec->flags[minus] && (int)pf_strlen(tmp) < spec->prec)
 	{
@@ -72,7 +72,7 @@ static int			is_zero(t_flags *spec, char *tmp, intmax_t len, int *i)
 		return (i[0] < ((int)len - ((int)pf_strlen(tmp) - i[1])));
 }
 
-static intmax_t		get_arg(t_flags *spec, va_list args)
+static intmax_t		pf_get_arg(t_flags *spec, va_list args)
 {
 	intmax_t		arg;
 
@@ -104,18 +104,18 @@ t_printf			*pf_handle_signed_int(t_flags *spec, va_list args)
 	int				len;
 	int				*i;
 
-	arg = get_arg(spec, args);
+	arg = pf_get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
 		return (pf_zeroprec(spec));
 	tmp = pf_itoa(arg);
-	len = mallsize(spec, arg);
+	len = pf_mallsize(spec, arg);
 	rst = pf_memalloc(sizeof(*rst) * (len + 1));
 	i = pf_tabset(2);
-	while (is_space(spec, tmp, len, i[0]))
+	while (pf_is_space(spec, tmp, len, i[0]))
 		rst[(i[0])++] = ' ';
 	if (tmp[i[1]] == '-' || spec->flags[plus])
 		rst[i[0]++] = (tmp[i[1]] == '-' ? tmp[i[1]++] : '+');
-	while (is_zero(spec, tmp, len, i))
+	while (pf_is_zero(spec, tmp, len, i))
 		rst[i[0]++] = '0';
 	while (tmp[i[1]])
 		rst[i[0]++] = tmp[i[1]++];

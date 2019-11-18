@@ -6,14 +6,14 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/17 04:06:07 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:40:21 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:31:22 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/handlers.h"
 
-static int	mallsize(t_flags *spec, char *arg)
+static int	pf_mallsize(t_flags *spec, char *arg)
 {
 	int		tmp;
 
@@ -34,7 +34,7 @@ t_printf	*pf_handle_str(t_flags *spec, va_list args)
 		arg = "(null)";
 	if (spec->size == l)
 		return (pf_lstnew(NULL, 0));
-	len = mallsize(spec, arg);
+	len = pf_mallsize(spec, arg);
 	if ((rst = (char*)pf_memalloc(sizeof(*rst) * (len + 1))) == NULL)
 		return (NULL);
 	i[0] = 0;

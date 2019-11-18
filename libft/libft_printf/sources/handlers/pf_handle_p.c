@@ -6,18 +6,18 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/09/25 06:55:25 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 16:16:21 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 12:24:06 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-t_printf	*arg_zero(t_flags *spec)
+static t_printf	*pf_arg_zero(t_flags *spec)
 {
-	char	*rst;
-	int		len;
-	int		i;
+	char		*rst;
+	int			len;
+	int			i;
 
 	if (spec->prec == -1)
 		spec->prec = 1;
@@ -37,17 +37,17 @@ t_printf	*arg_zero(t_flags *spec)
 	return (pf_lstnew(rst, pf_strlen(rst)));
 }
 
-t_printf	*pf_handle_p(t_flags *spec, va_list args)
+t_printf		*pf_handle_p(t_flags *spec, va_list args)
 {
-	char	*rst;
-	char	*tmp;
-	void	*arg;
-	int		*i;
-	int		len;
+	char		*rst;
+	char		*tmp;
+	void		*arg;
+	int			*i;
+	int			len;
 
 	arg = va_arg(args, void*);
 	if (arg == 0)
-		return (arg_zero(spec));
+		return (pf_arg_zero(spec));
 	tmp = pf_itoa_base_unsigned((long int)arg, 16, 0);
 	if (spec->width == -1)
 		spec->width = 0;
