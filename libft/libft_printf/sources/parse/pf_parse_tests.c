@@ -18,18 +18,18 @@ int		pf_is_conv(const char c)
 	return (pf_strchr("%sdDioOuUxXcpfF", c) != NULL);
 }
 
-int		is_size(const char c)
+int		pf_is_size(const char c)
 {
 	return (pf_strchr("hljz", c) != NULL);
 }
 
-int		is_flag(const char c)
+int		pf_is_flag(const char c)
 {
 	return (pf_strchr("0#-+ L", c) != NULL);
 }
 
-int		is_valid(const char c)
+int		pf_is_valid(const char c)
 {
-	return (pf_is_conv(c) || is_size(c) || is_flag(c) || pf_isdigit(c)
+	return (pf_is_conv(c) || pf_is_size(c) || pf_is_flag(c) || pf_isdigit(c)
 			|| c == '.');
 }

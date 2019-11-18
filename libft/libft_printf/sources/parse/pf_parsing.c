@@ -93,7 +93,7 @@ t_flags			*pf_parse(char *arg)
 	pf_set_t_flags(spec);
 	while (!pf_is_conv(*arg) && (*arg))
 	{
-		if (is_flag(*arg))
+		if (pf_is_flag(*arg))
 			pf_def_flags(*arg, spec);
 		else if (pf_isdigit(*arg))
 			spec->width = pf_mini_atoi(&arg);
@@ -103,7 +103,7 @@ t_flags			*pf_parse(char *arg)
 			spec->prec = 0;
 			spec->prec = pf_mini_atoi(&arg);
 		}
-		else if (is_size(*arg))
+		else if (pf_is_size(*arg))
 			pf_def_size(&arg, spec);
 		arg++;
 	}

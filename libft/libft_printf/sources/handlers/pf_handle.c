@@ -20,7 +20,7 @@ t_printf			*pf_handle(char **str, va_list args, int a)
 	t_printf		*curr_list;
 
 	i = a;
-	while ((*str)[i] && is_valid((*str)[i]) && !pf_is_conv((*str)[i]))
+	while ((*str)[i] && pf_is_valid((*str)[i]) && !pf_is_conv((*str)[i]))
 		i++;
 	if (!(*str)[i] || !pf_is_conv((*str)[i]))
 	{
