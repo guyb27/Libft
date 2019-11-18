@@ -13,7 +13,7 @@
 
 #include "../../includes/ft_printf.h"
 
-t_printf	*ftprintf_handle_char(t_flags *spec, va_list args)
+t_printf	*pf_handle_char(t_flags *spec, va_list args)
 {
 	char	arg;
 	char	*str;

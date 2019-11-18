@@ -79,7 +79,7 @@ static void		flag_hash(char **rst, int *i, t_flags *spec)
 	}
 }
 
-t_printf		*ftprintf_handle_hex(t_flags *spec, va_list args)
+t_printf		*pf_handle_hex(t_flags *spec, va_list args)
 {
 	char		*rst;
 	char		*tmp;
@@ -89,7 +89,7 @@ t_printf		*ftprintf_handle_hex(t_flags *spec, va_list args)
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
-		return (ftprintf_zeroprec(spec));
+		return (pf_zeroprec(spec));
 	tmp = pf_itoa_base_unsigned(arg, 16, spec->conv == 'X');
 	len = MAX((int)pf_strlen(tmp) + !(arg == 0) * 2 * spec->flags[hash],
 			(MAX(spec->width, spec->prec + 2 * spec->flags[hash])));
@@ -104,6 +104,6 @@ t_printf		*ftprintf_handle_hex(t_flags *spec, va_list args)
 		rst[i[0]++] = tmp[i[1]++];
 	while (i[0] < len && spec->flags[minus])
 		rst[i[0]++] = ' ';
-	ft_printf_utils_norme(&rst, i, tmp);
+	pf_utils_norme(&rst, i, tmp);
 	return (ft_lstnew(rst, len));
 }

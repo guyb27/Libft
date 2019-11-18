@@ -1,48 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   specialize.c                                     .::    .:/ .      .::   */
+/*   pf_parsing.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: gmadec <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/06/27 15:09:16 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 17:07:51 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/11/18 11:21:00 by gmadec       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/18 11:28:08 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/parse.h"
 
-t_flags		*parse(char *arg)
-{
-	t_flags		*spec;
-
-	if ((spec = (t_flags*)pf_memalloc(sizeof(*spec))) == NULL)
-		return (NULL);
-	set_t_flags(spec);
-	while (!is_conv(*arg) && (*arg))
-	{
-		if (is_flag(*arg))
-			def_flags(*arg, spec);
-		else if (pf_isdigit(*arg))
-			spec->width = mini_atoi(&arg);
-		else if (*arg == '.')
-		{
-			arg++;
-			spec->prec = 0;
-			spec->prec = mini_atoi(&arg);
-		}
-		else if (is_size(*arg))
-			def_size(&arg, spec);
-		arg++;
-	}
-	if (!(*arg))
-		return (NULL);
-	spec->conv = *arg;
-	return (spec);
-}
-
-void		set_t_flags(t_flags *spec)
+static void		pf_set_t_flags(t_flags *spec)
 {
 	spec->flags[0] = 0;
 	spec->flags[1] = 0;
@@ -56,7 +27,7 @@ void		set_t_flags(t_flags *spec)
 	spec->conv = '0';
 }
 
-void		def_flags(char c, t_flags *spec)
+static void		pf_def_flags(char c, t_flags *spec)
 {
 	if (c == '#')
 		spec->flags[hash] = 1;
@@ -72,7 +43,7 @@ void		def_flags(char c, t_flags *spec)
 		spec->flags[maj_l] = 1;
 }
 
-int			mini_atoi(char **arg)
+int				pf_mini_atoi(char **arg)
 {
 	int		rst;
 
@@ -87,7 +58,7 @@ int			mini_atoi(char **arg)
 	return (rst);
 }
 
-void		def_size(char **arg, t_flags *spec)
+static void		pf_def_size(char **arg, t_flags *spec)
 {
 	if (**arg == 'h' && spec->size <= hh)
 	{
@@ -111,4 +82,33 @@ void		def_size(char **arg, t_flags *spec)
 		spec->size = j;
 	else if (**arg == 'z')
 		spec->size = z;
+}
+
+t_flags			*pf_parse(char *arg)
+{
+	t_flags		*spec;
+
+	if ((spec = (t_flags*)pf_memalloc(sizeof(*spec))) == NULL)
+		return (NULL);
+	pf_set_t_flags(spec);
+	while (!pf_is_conv(*arg) && (*arg))
+	{
+		if (is_flag(*arg))
+			pf_def_flags(*arg, spec);
+		else if (pf_isdigit(*arg))
+			spec->width = pf_mini_atoi(&arg);
+		else if (*arg == '.')
+		{
+			arg++;
+			spec->prec = 0;
+			spec->prec = pf_mini_atoi(&arg);
+		}
+		else if (is_size(*arg))
+			pf_def_size(&arg, spec);
+		arg++;
+	}
+	if (!(*arg))
+		return (NULL);
+	spec->conv = *arg;
+	return (spec);
 }

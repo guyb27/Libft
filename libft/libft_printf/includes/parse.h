@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/05 18:26:25 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:28:44 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 11:30:02 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,13 +26,9 @@ typedef struct	s_flags {
 	char		conv;
 }				t_flags;
 
-t_flags			*parse(char *arg);
-void			set_t_flags(t_flags *spec);
-void			def_flags(char c, t_flags *spec);
-int				mini_atoi(char **arg);
-void			def_size(char **arg, t_flags *spec);
+t_flags			*pf_parse(char *arg);
 
-int				is_conv(const char c);
+int				pf_is_conv(const char c);
 int				is_size(const char c);
 int				is_flag(const char c);
 int				is_valid(const char c);

@@ -6,28 +6,28 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/15 06:53:41 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:38:15 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 11:05:32 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/handlers.h"
 
-t_printf			*handle(char **str, va_list args, int a)
+t_printf			*pf_handle(char **str, va_list args, int a)
 {
 	t_flags			*spec;
 	int				i;
 	t_printf		*curr_list;
 
 	i = a;
-	while ((*str)[i] && is_valid((*str)[i]) && !is_conv((*str)[i]))
+	while ((*str)[i] && is_valid((*str)[i]) && !pf_is_conv((*str)[i]))
 		i++;
-	if (!(*str)[i] || !is_conv((*str)[i]))
+	if (!(*str)[i] || !pf_is_conv((*str)[i]))
 	{
 		*str = &(*str)[i];
 		return (ft_lstnew(NULL, -1));
 	}
-	spec = parse(&(*str)[a]);
+	spec = pf_parse(&(*str)[a]);
 	curr_list = select_conv(spec, args);
 	free(spec);
 	if (a > 1)
@@ -49,7 +49,7 @@ static t_handlers	tabinit(char conv, t_printf *(*fct)(t_flags*, va_list))
 	return (ptr);
 }
 
-void				ft_printf_utils_norme(char **rst, int *i, char *tmp)
+void				pf_utils_norme(char **rst, int *i, char *tmp)
 {
 	(*rst)[i[0]] = '\0';
 	free(i);
@@ -61,21 +61,21 @@ t_printf			*select_conv(t_flags *spec, va_list args)
 	t_handlers		tab_handlers[15];
 	int				i;
 
-	tab_handlers[0] = tabinit('%', &ftprintf_handle_percent);
-	tab_handlers[1] = tabinit('c', &ftprintf_handle_char);
-	tab_handlers[2] = tabinit('s', &ftprintf_handle_str);
-	tab_handlers[3] = tabinit('d', &ftprintf_handle_signed_int);
-	tab_handlers[4] = tabinit('D', &ftprintf_handle_signed_int);
-	tab_handlers[5] = tabinit('i', &ftprintf_handle_signed_int);
-	tab_handlers[6] = tabinit('u', &ftprintf_handle_unsigned_int);
-	tab_handlers[7] = tabinit('U', &ftprintf_handle_unsigned_int);
-	tab_handlers[8] = tabinit('o', &ftprintf_handle_oct);
-	tab_handlers[9] = tabinit('O', &ftprintf_handle_oct);
-	tab_handlers[10] = tabinit('x', &ftprintf_handle_hex);
-	tab_handlers[11] = tabinit('X', &ftprintf_handle_hex);
-	tab_handlers[12] = tabinit('p', &ftprintf_handle_p);
-	tab_handlers[13] = tabinit('f', &ftprintf_handle_float);
-	tab_handlers[14] = tabinit('F', &ftprintf_handle_float);
+	tab_handlers[0] = tabinit('%', &pf_handle_percent);
+	tab_handlers[1] = tabinit('c', &pf_handle_char);
+	tab_handlers[2] = tabinit('s', &pf_handle_str);
+	tab_handlers[3] = tabinit('d', &pf_handle_signed_int);
+	tab_handlers[4] = tabinit('D', &pf_handle_signed_int);
+	tab_handlers[5] = tabinit('i', &pf_handle_signed_int);
+	tab_handlers[6] = tabinit('u', &pf_handle_unsigned_int);
+	tab_handlers[7] = tabinit('U', &pf_handle_unsigned_int);
+	tab_handlers[8] = tabinit('o', &pf_handle_oct);
+	tab_handlers[9] = tabinit('O', &pf_handle_oct);
+	tab_handlers[10] = tabinit('x', &pf_handle_hex);
+	tab_handlers[11] = tabinit('X', &pf_handle_hex);
+	tab_handlers[12] = tabinit('p', &pf_handle_p);
+	tab_handlers[13] = tabinit('f', &pf_handle_float);
+	tab_handlers[14] = tabinit('F', &pf_handle_float);
 	i = -1;
 	while (++i < 15)
 	{

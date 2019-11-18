@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/18 10:51:13 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 11:17:26 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,49 +15,49 @@ NAME = libftprintf.a
 
 FLAGS = -Werror -Wextra -Wall
 
-LIBFT_PATH = ./sources/libft
+PF_LIBFT_PATH = ./sources/libft
 
-LIBFT = sources/libft/pf_isdigit.c \
-		sources/libft/pf_isinstr.c \
-		sources/libft/pf_memalloc.c \
-		sources/libft/pf_tabset.c \
-		sources/libft/pf_strchr.c \
-		sources/libft/pf_strdup.c \
-		sources/libft/pf_strcut.c \
-		sources/libft/pf_strlen.c \
-		sources/libft/pf_strnjoin.c \
-		sources/libft/pf_itoa.c \
-		sources/libft/pf_ftoa.c \
-		sources/libft/pf_itoa_base.c \
-		sources/libft/pf_strsub.c \
-		sources/libft/pf_strnew.c \
+LIBFT = $(PF_LIBFT_PATH)/pf_isdigit.c \
+		$(PF_LIBFT_PATH)/pf_isinstr.c \
+		$(PF_LIBFT_PATH)/pf_memalloc.c \
+		$(PF_LIBFT_PATH)/pf_tabset.c \
+		$(PF_LIBFT_PATH)/pf_strchr.c \
+		$(PF_LIBFT_PATH)/pf_strdup.c \
+		$(PF_LIBFT_PATH)/pf_strcut.c \
+		$(PF_LIBFT_PATH)/pf_strlen.c \
+		$(PF_LIBFT_PATH)/pf_strnjoin.c \
+		$(PF_LIBFT_PATH)/pf_itoa.c \
+		$(PF_LIBFT_PATH)/pf_ftoa.c \
+		$(PF_LIBFT_PATH)/pf_itoa_base.c \
+		$(PF_LIBFT_PATH)/pf_strsub.c \
+		$(PF_LIBFT_PATH)/pf_strnew.c \
 
-LISTS_PATH = ./sources/lists
+PF_LISTS_PATH = ./sources/lists
 
-LISTS = sources/lists/ft_lstdel.c \
-		sources/lists/ft_lstaddend.c \
-		sources/lists/ft_lstlen.c \
-		sources/lists/ft_lstnew.c \
-		sources/lists/ft_lstprint.c \
+LISTS = $(PF_LISTS_PATH)/ft_lstdel.c \
+		$(PF_LISTS_PATH)/ft_lstaddend.c \
+		$(PF_LISTS_PATH)/ft_lstlen.c \
+		$(PF_LISTS_PATH)/ft_lstnew.c \
+		$(PF_LISTS_PATH)/ft_lstprint.c \
 
 PARSE_PATH = ./sources/parse
 
-PARSE = sources/parse/parse_tests.c \
-		sources/parse/parsing.c \
+PARSE = sources/parse/pf_parse_tests.c \
+		sources/parse/pf_parsing.c \
 
-HANDLERS_PATH = ./sources/handlers
+HANDLERS_PATH = sources/handlers
 
-HANDLERS = sources/handlers/ft_printf.c \
-		   sources/handlers/pf_handle.c \
-		   sources/handlers/pf_handle_percent.c \
-		   sources/handlers/pf_handle_char.c \
-		   sources/handlers/pf_handle_str.c \
-		   sources/handlers/pf_handle_signed_int.c \
-		   sources/handlers/pf_handle_unsigned_int.c \
-		   sources/handlers/pf_handle_hex.c \
-		   sources/handlers/pf_handle_oct.c \
-		   sources/handlers/pf_handle_p.c \
-		   sources/handlers/pf_handle_float.c \
+HANDLERS = $(HANDLERS_PATH)/ft_printf.c \
+		   $(HANDLERS_PATH)/pf_handle.c \
+		   $(HANDLERS_PATH)/pf_handle_percent.c \
+		   $(HANDLERS_PATH)/pf_handle_char.c \
+		   $(HANDLERS_PATH)/pf_handle_str.c \
+		   $(HANDLERS_PATH)/pf_handle_signed_int.c \
+		   $(HANDLERS_PATH)/pf_handle_unsigned_int.c \
+		   $(HANDLERS_PATH)/pf_handle_hex.c \
+		   $(HANDLERS_PATH)/pf_handle_oct.c \
+		   $(HANDLERS_PATH)/pf_handle_p.c \
+		   $(HANDLERS_PATH)/pf_handle_float.c \
 
 
 SRCS = $(LIBFT) $(LISTS) $(PARSE)
@@ -69,10 +69,10 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
-$(LIBFT_PATH)%.o: $(LIBFT)%.c
+$(PF_LIBFT_PATH)%.o: $(LIBFT)%.c
 	@gcc -c $(FLAGS) $(LIBFT)
 
-$(LISTS_PATH)%.o: $(LISTS)%.c
+$(PF_LISTS_PATH)%.o: $(LISTS)%.c
 	@gcc -c $(FLAGS) $(LISTS)
 
 $(PARSE_PATH)%.o: $(PARSE)%.c

@@ -58,7 +58,7 @@ static long double		get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_printf				*ftprintf_handle_float(t_flags *spec, va_list args)
+t_printf				*pf_handle_float(t_flags *spec, va_list args)
 {
 	char				*rst;
 	char				*tmp;

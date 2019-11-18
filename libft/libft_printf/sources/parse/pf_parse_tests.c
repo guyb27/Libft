@@ -13,7 +13,7 @@
 
 #include "../../includes/parse.h"
 
-int		is_conv(const char c)
+int		pf_is_conv(const char c)
 {
 	return (pf_strchr("%sdDioOuUxXcpfF", c) != NULL);
 }
@@ -30,6 +30,6 @@ int		is_flag(const char c)
 
 int		is_valid(const char c)
 {
-	return (is_conv(c) || is_size(c) || is_flag(c) || pf_isdigit(c)
+	return (pf_is_conv(c) || is_size(c) || is_flag(c) || pf_isdigit(c)
 			|| c == '.');
 }

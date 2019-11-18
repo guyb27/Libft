@@ -13,7 +13,7 @@
 
 #include "../../includes/ft_printf.h"
 
-t_printf	*ftprintf_handle_percent(t_flags *spec, va_list args)
+t_printf	*pf_handle_percent(t_flags *spec, va_list args)
 {
 	char	*rst;
 	int		len;

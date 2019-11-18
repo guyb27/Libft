@@ -13,7 +13,7 @@
 
 #include "../../includes/ft_printf.h"
 
-t_printf			*ftprintf_zeroprec(t_flags *spec)
+t_printf			*pf_zeroprec(t_flags *spec)
 {
 	char			*rst;
 	int				len;
@@ -94,7 +94,7 @@ static uintmax_t	get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_printf			*ftprintf_handle_unsigned_int(t_flags *spec, va_list args)
+t_printf			*pf_handle_unsigned_int(t_flags *spec, va_list args)
 {
 	char			*rst;
 	char			*tmp;
@@ -104,7 +104,7 @@ t_printf			*ftprintf_handle_unsigned_int(t_flags *spec, va_list args)
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
-		return (ftprintf_zeroprec(spec));
+		return (pf_zeroprec(spec));
 	tmp = pf_itoa_base_unsigned((uintmax_t)arg, 10, 0);
 	len = MAX((int)pf_strlen(tmp), (MAX(spec->width, spec->prec)));
 	rst = pf_memalloc(sizeof(*rst) * (len + 1));

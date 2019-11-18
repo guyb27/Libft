@@ -91,7 +91,7 @@ int	pf_inner_printf(int (*f)(void**, t_printf*), void **fd, va_list args,
 	{
 		if (str[i] == '%')
 		{
-			ft_lstaddend(&list, handle(&str, args, i + 1));
+			ft_lstaddend(&list, pf_handle(&str, args, i + 1));
 			i = -1;
 		}
 		i++;

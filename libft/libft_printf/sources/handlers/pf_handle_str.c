@@ -23,7 +23,7 @@ static int	mallsize(t_flags *spec, char *arg)
 	return (MAX(tmp, spec->width));
 }
 
-t_printf	*ftprintf_handle_str(t_flags *spec, va_list args)
+t_printf	*pf_handle_str(t_flags *spec, va_list args)
 {
 	char	*arg;
 	char	*rst;

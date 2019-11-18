@@ -79,7 +79,7 @@ static intmax_t			get_arg(t_flags *spec, va_list args)
 	return (arg);
 }
 
-t_printf				*ftprintf_handle_oct(t_flags *spec, va_list args)
+t_printf				*pf_handle_oct(t_flags *spec, va_list args)
 {
 	char				*rst;
 	char				*tmp;
@@ -89,7 +89,7 @@ t_printf				*ftprintf_handle_oct(t_flags *spec, va_list args)
 
 	arg = get_arg(spec, args);
 	if (spec->prec == 0 && arg == 0)
-		return (ftprintf_zeroprec(spec));
+		return (pf_zeroprec(spec));
 	tmp = pf_itoa_base_unsigned(arg, 8, 0);
 	len = mallsize(arg, spec, tmp);
 	rst = pf_memalloc(sizeof(*rst) * (len + 1));
