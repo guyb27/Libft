@@ -33,7 +33,7 @@ t_printf	*pf_handle_str(t_flags *spec, va_list args)
 	if ((arg = va_arg(args, char*)) == NULL)
 		arg = "(null)";
 	if (spec->size == l)
-		return (ft_lstnew(NULL, 0));
+		return (pf_lstnew(NULL, 0));
 	len = mallsize(spec, arg);
 	if ((rst = (char*)pf_memalloc(sizeof(*rst) * (len + 1))) == NULL)
 		return (NULL);
@@ -46,5 +46,5 @@ t_printf	*pf_handle_str(t_flags *spec, va_list args)
 	while (i[0] < len)
 		rst[i[0]++] = ' ';
 	rst[i[0]] = '\0';
-	return (ft_lstnew(rst, len));
+	return (pf_lstnew(rst, len));
 }

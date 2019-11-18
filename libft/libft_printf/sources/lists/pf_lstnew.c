@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lstnew.c                                      .::    .:/ .      .::   */
+/*   pf_lstnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
@@ -13,7 +13,7 @@
 
 #include "../../includes/lists.h"
 
-t_printf	*ft_lstnew(char *str, size_t len)
+t_printf	*pf_lstnew(char *str, size_t len)
 {
 	t_printf	*new;
 

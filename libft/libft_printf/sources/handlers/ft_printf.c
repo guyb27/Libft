@@ -25,7 +25,7 @@ int	ft_printf(const char *format, ...)
 	if (!format || !*format)
 		return (0);
 	va_start(args, format);
-	ret = pf_inner_printf(ft_lstprint, &tmp, args, format);
+	ret = pf_inner_printf(pf_lstprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }
@@ -40,7 +40,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	if (!format || !*format || fd < 0)
 		return (0);
 	va_start(args, format);
-	ret = pf_inner_printf(ft_lstprint, &tmp, args, format);
+	ret = pf_inner_printf(pf_lstprint, &tmp, args, format);
 	va_end(args);
 	return (ret);
 }
@@ -91,13 +91,13 @@ int	pf_inner_printf(int (*f)(void**, t_printf*), void **fd, va_list args,
 	{
 		if (str[i] == '%')
 		{
-			ft_lstaddend(&list, pf_handle(&str, args, i + 1));
+			pf_lstaddend(&list, pf_handle(&str, args, i + 1));
 			i = -1;
 		}
 		i++;
 	}
 	if (i > 0)
-		ft_lstaddend(&list, ft_lstnew(pf_strcut(str, i), i));
+		pf_lstaddend(&list, pf_lstnew(pf_strcut(str, i), i));
 	ret = f(fd, list);
 	free(list);
 	return (ret);

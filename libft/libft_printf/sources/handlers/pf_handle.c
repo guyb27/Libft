@@ -25,7 +25,7 @@ t_printf			*pf_handle(char **str, va_list args, int a)
 	if (!(*str)[i] || !pf_is_conv((*str)[i]))
 	{
 		*str = &(*str)[i];
-		return (ft_lstnew(NULL, -1));
+		return (pf_lstnew(NULL, -1));
 	}
 	spec = pf_parse(&(*str)[a]);
 	curr_list = select_conv(spec, args);

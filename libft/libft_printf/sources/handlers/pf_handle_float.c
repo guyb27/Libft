@@ -83,5 +83,5 @@ t_printf				*pf_handle_float(t_flags *spec, va_list args)
 		rst[i[0]++] = ' ';
 	rst[i[0]] = '\0';
 	free(tmp);
-	return (ft_lstnew(rst, len));
+	return (pf_lstnew(rst, len));
 }

@@ -105,5 +105,5 @@ t_printf		*pf_handle_hex(t_flags *spec, va_list args)
 	while (i[0] < len && spec->flags[minus])
 		rst[i[0]++] = ' ';
 	pf_utils_norme(&rst, i, tmp);
-	return (ft_lstnew(rst, len));
+	return (pf_lstnew(rst, len));
 }

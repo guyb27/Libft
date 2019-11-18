@@ -34,7 +34,7 @@ t_printf			*pf_zeroprec(t_flags *spec)
 	if (i == len - 1)
 		rst[i++] = (pf_isinstr("dDi", spec->conv) ? '+' : '0');
 	rst[i] = '\0';
-	return (ft_lstnew(rst, len));
+	return (pf_lstnew(rst, len));
 }
 
 static int			is_space(t_flags *spec, char *tmp, intmax_t len, int i)
@@ -120,5 +120,5 @@ t_printf			*pf_handle_unsigned_int(t_flags *spec, va_list args)
 		rst[i[0]++] = ' ';
 	rst[i[0]] = '\0';
 	free(tmp);
-	return (ft_lstnew(rst, len));
+	return (pf_lstnew(rst, len));
 }

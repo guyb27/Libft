@@ -30,5 +30,5 @@ t_printf	*pf_handle_percent(t_flags *spec, va_list args)
 	if (!spec->flags[minus])
 		rst[i++] = '%';
 	rst[i] = '\0';
-	return (ft_lstnew(rst, pf_strlen(rst)));
+	return (pf_lstnew(rst, pf_strlen(rst)));
 }

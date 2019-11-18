@@ -6,7 +6,7 @@
 #    By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/06/26 01:24:46 by qcharpen     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/18 11:17:26 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 11:49:48 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -34,11 +34,9 @@ LIBFT = $(PF_LIBFT_PATH)/pf_isdigit.c \
 
 PF_LISTS_PATH = ./sources/lists
 
-LISTS = $(PF_LISTS_PATH)/ft_lstdel.c \
-		$(PF_LISTS_PATH)/ft_lstaddend.c \
-		$(PF_LISTS_PATH)/ft_lstlen.c \
-		$(PF_LISTS_PATH)/ft_lstnew.c \
-		$(PF_LISTS_PATH)/ft_lstprint.c \
+LISTS = $(PF_LISTS_PATH)/pf_lstaddend.c \
+		$(PF_LISTS_PATH)/pf_lstnew.c \
+		$(PF_LISTS_PATH)/pf_lstprint.c \
 
 PARSE_PATH = ./sources/parse
 

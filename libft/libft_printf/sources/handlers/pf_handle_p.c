@@ -34,7 +34,7 @@ t_printf	*arg_zero(t_flags *spec)
 	while (i < len)
 		rst[i++] = ' ';
 	rst[i] = '\0';
-	return (ft_lstnew(rst, pf_strlen(rst)));
+	return (pf_lstnew(rst, pf_strlen(rst)));
 }
 
 t_printf	*pf_handle_p(t_flags *spec, va_list args)
@@ -63,5 +63,5 @@ t_printf	*pf_handle_p(t_flags *spec, va_list args)
 	while (i[0] < spec->width)
 		rst[(i[0])++] = ' ';
 	pf_utils_norme(&rst, i, tmp);
-	return (ft_lstnew(rst, pf_strlen(rst)));
+	return (pf_lstnew(rst, pf_strlen(rst)));
 }

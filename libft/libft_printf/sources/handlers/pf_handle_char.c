@@ -22,7 +22,7 @@ t_printf	*pf_handle_char(t_flags *spec, va_list args)
 
 	arg = va_arg(args, int);
 	if (spec->size == l)
-		return (ft_lstnew(NULL, 0));
+		return (pf_lstnew(NULL, 0));
 	i = 0;
 	len = (spec->width == -1 ? 1 : spec->width);
 	str = (char*)pf_memalloc(sizeof(*str) * (len + 1));
@@ -33,5 +33,5 @@ t_printf	*pf_handle_char(t_flags *spec, va_list args)
 	if (i != len)
 		str[i++] = arg;
 	str[i] = '\0';
-	return (ft_lstnew(str, len));
+	return (pf_lstnew(str, len));
 }

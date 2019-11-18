@@ -6,7 +6,7 @@
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/05 18:23:59 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 10:35:02 by gmadec      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 11:51:32 by gmadec      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,11 +22,9 @@ typedef struct		s_printf
 	struct s_printf	*next;
 }					t_printf;
 
-void				ft_lstaddend(t_printf **alst, t_printf *nxt);
-void				ft_lstdel(t_printf **alst);
-t_printf			*ft_lstnew(char *str, size_t len);
-size_t				ft_lstlen(t_printf *list);
-int					ft_lstprint(void **fd, t_printf *lst);
+void				pf_lstaddend(t_printf **alst, t_printf *nxt);
+t_printf			*pf_lstnew(char *str, size_t len);
+int					pf_lstprint(void **fd, t_printf *lst);
 int					ft_lstsprint(void **fd, t_printf *lst);
 int					ft_lstfprint(void **fd, t_printf *lst);
 

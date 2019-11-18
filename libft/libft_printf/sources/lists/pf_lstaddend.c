@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lstlen.c                                      .::    .:/ .      .::   */
+/*   ft_lstadd.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: qcharpen <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/08/17 01:29:37 by qcharpen     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/27 11:23:20 by qcharpen    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 16:56:49 by qcharpen     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/17 18:35:29 by qcharpen    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/lists.h"
 
-size_t		ft_lstlen(t_printf *list)
+void	pf_lstaddend(t_printf **alst, t_printf *nxt)
 {
-	size_t	len;
+	t_printf	*curr;
 
-	len = 0;
-	while (list)
+	if (!*alst)
+		*alst = nxt;
+	else
 	{
-		if (list->size > 0)
-			len += list->size;
-		list = list->next;
+		curr = *alst;
+		while (curr->next)
+			curr = curr->next;
+		curr->next = nxt;
 	}
-	return (len);
 }
