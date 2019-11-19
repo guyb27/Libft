@@ -6,14 +6,14 @@
 #    By: dzonda <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/24 18:33:54 by dzonda       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/19 22:20:08 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/19 22:24:46 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 .PHONY: all re clean fclean lib
 
-NAME = 42sh
+NAME = philo
 
 MAKE = make
 CC = gcc
@@ -32,15 +32,10 @@ SRCS_NAME =	\
 			hello.c \
 			main.c
 
-OBJS_FOLDERS = 	\
-				heart init ft_select lexer parser extension execute builtins \
-				line_edition
-
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 
 SRCS = $(addprefix $(SRCS_PATH),$(SRCS_NAME))
 OBJS = $(addprefix $(OBJS_PATH),$(OBJS_NAME))
-OBJS_FOLDERS_BIS = $(addprefix $(OBJS_PATH),$(OBJS_FOLDERS))
 
 NB_FILES = $(words $(SRCS_NAME))
 SHELL = /bin/bash # just because sh print -n from echo
@@ -83,7 +78,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@printf "\e[0m"			# reset color
 	@echo -n "$(PERCENT) $@"
 	@printf "\e[0K\n\e[u\e[?25h"
-	@mkdir $(OBJS_PATH) $(OBJS_FOLDERS_BIS) 2> /dev/null || true
+	@mkdir $(OBJS_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 val: lldb
