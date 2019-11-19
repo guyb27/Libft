@@ -1,8 +1,5 @@
-
-//# include "libft_printf/includes/ft_printf.h"
-# include "test.h"
-
+#include "include/libft.h"
 int main()
 {
-	ft_printf("LIB.A OK\n");
+	ft_printf("OKOK\n");
 }
