@@ -6,7 +6,7 @@
 #    By: dzonda <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/24 18:33:54 by dzonda       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/19 22:24:46 by gmadec      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/19 22:31:08 by gmadec      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,7 +19,7 @@ MAKE = make
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -Wunused -Wunreachable-code
 CPPFLAGS = -I ./include/
-LDLIBS = -lft -ltermcap
+LDLIBS = -lft
 LDFLAGS = -Llibft/
 RM = rm -f
 
@@ -82,16 +82,16 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 val: lldb
-	valgrind --suppressions=.valgrind.supp --leak-check=full --track-origins=yes ./a.out
+	valgrind --leak-check=full --track-origins=yes ./a.out
 
 valgrind: lldb
-	valgrind --suppressions=.valgrind.supp --leak-check=full --track-origins=yes ./a.out
+	valgrind --leak-check=full --track-origins=yes ./a.out
 
 valsup: lldb
 	valgrind --gen-suppressions=all --leak-check=full --track-origins=yes --show-leak-kinds=all ./a.out
 
 lldb:
-	gcc -ggdb3 src/*/*.c libft/src/*.c -I include -I libft/include -ltermcap
+	gcc -ggdb3 src/*.c libft/src/*.c -I include -I libft/include
 
 lib:
 	@make -C $(LIB_PATH)
